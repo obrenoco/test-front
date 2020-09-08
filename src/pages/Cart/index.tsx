@@ -1,11 +1,16 @@
 import React from 'react';
-import ProductCard from '../../components/ProductCard'
+import CardsContainer from '../../components/CardsContainer'
+
+import {Container} from './styles'
 
 const Cart: React.FC = () => (
-    <>
-      <h1>Cart</h1>
-      <ProductCard />
-    </>
+  <>
+    <h1>Cart</h1>
+    <Container>
+      <CardsContainer>
+      </CardsContainer>
+    </Container>
+  </>
 );
 
 export default Cart;
