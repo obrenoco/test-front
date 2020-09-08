@@ -8,7 +8,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #EEE;
+    background: #fff;
     --webkit-font-smoothing: antialiased;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -20,8 +20,10 @@ export default createGlobalStyle`
       monospace;
   }
   #root {
+    background: #EEE;
     max-width: 960px;
     margin: 0 auto;
+    height: 100vh;
   }
   button {
     cursor: pointer;

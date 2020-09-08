@@ -11,7 +11,7 @@ const ProductCard: React.FC = () => {
       />
       <div>
         <Title>L'oreal Professionnel Expert Absolut Repair Cortex Lipidium</Title>
-        <Price>RS 299,00</Price>
+        <Price>R$ 299,00</Price>
       </div>
     </Product>
   );

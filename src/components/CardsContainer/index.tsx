@@ -9,6 +9,7 @@ const CardsContainer: React.FC = () => {
       <Title>Produtos</Title>
       <Cards>
         <ProductCard />
+        <ProductCard />
       </Cards>
     </Container>
   );
