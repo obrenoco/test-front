@@ -1,11 +1,15 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from './routes';
+
 import logo from './logo.svg';
 import './App.css';
 
-const App = () => (
-  <div className="App">
-    <img src={logo} className="App-logo" alt="logo" />
-  </div>
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>
 );
 
 export default App;
