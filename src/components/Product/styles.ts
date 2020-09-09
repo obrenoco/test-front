@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Product = styled.div`
+export const Container = styled.div`
   margin: 15px auto;
   height: 90px;
   display: flex;

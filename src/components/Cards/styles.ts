@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-
-`;
+export const Container = styled.div``;
 export const Title = styled.text`
   height: 17px;
   text-transform: uppercase;
@@ -16,7 +14,7 @@ export const Title = styled.text`
   letter-spacing: NaNpx;
   line-height: 17px;
 `;
-export const Cards = styled.div`
+export const CardList = styled.div`
   margin: 0 auto;
   padding: 0.1px 12px;
   border-radius: 3px;

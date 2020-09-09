@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Product, Title, Price } from './styles';
+import { Container, Title, Price } from './styles';
 
-const ProductCard: React.FC = () => {
+const Product: React.FC = () => {
   return (
-    <Product>
+    <Container>
       <img
         src="https://i.imgur.com/0Hd73Qe.png"
         alt="L'oreal Professionnel"
@@ -13,8 +13,8 @@ const ProductCard: React.FC = () => {
         <Title>L'oreal Professionnel Expert Absolut Repair Cortex Lipidium</Title>
         <Price>R$ 299,00</Price>
       </div>
-    </Product>
+    </Container>
   );
 };
 
-export default ProductCard;
+export default Product;
