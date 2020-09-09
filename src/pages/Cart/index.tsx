@@ -1,6 +1,7 @@
 import React from 'react';
 import Cards from '../../components/Cards'
 import Total from '../../components/Total'
+import Buttom from '../../components/Buttom'
 
 import {Container} from './styles'
 
@@ -11,6 +12,7 @@ const Cart: React.FC = () => (
     <Container>
       <Cards />
       <Total />
+    <Buttom />
     </Container>
   </>
 );

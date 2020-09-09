@@ -19,7 +19,7 @@ const Total: React.FC = () => {
 
         <Discount>
           <p>Desconto</p>
-          <p>R$ 30,0</p>
+          <p>- R$ 30,0</p>
         </Discount>
 
         <TotalPrice>
