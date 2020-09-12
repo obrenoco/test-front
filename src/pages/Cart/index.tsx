@@ -1,65 +1,103 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 
-import {CartWrapper, CardsWrapper, ProductTitle, ItemTitle, CardList, Price, Product, TotalCard, PriceList, PriceItem, TotalPrice, Discount, ButtomIcon } from './styles'
+import api from '../../services/api'
 
-const Cart: React.FC = () => (
-  <>
-    <h1>Cart</h1>
+import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
 
-    <CartWrapper>
+interface PriceParams {
+  product: string;
+}
 
-      {/* <Cards /> */}
-      <CardsWrapper>
-        <ProductTitle>Produtos</ProductTitle>
-        <CardList>
-          <Product>
-            <img
-              src="https://i.imgur.com/0Hd73Qe.png"
-              alt="L'oreal Professionnel"
-            />
-            <div>
-              <ItemTitle>L'oreal Professionnel Expert Absolut Repair Cortex Lipidium</ItemTitle>
-              <Price>R$ 299,00</Price>
-            </div>
-          </Product>
-        </CardList>
-      </CardsWrapper>
+interface Price {
+  shippingTotal: number;
+  subTotal: number;
+  discount: number;
+  total: number;
+}
 
+interface Product {
+  id: string;
+  items: {
+    product: {
+      name: string;
+      imageObjects: {
+        small: string;
+      }
+      priceSpecification: {
+        price: number;
+      }
+    }
+  }
+}
 
-      {/* <Total /> */}
-      <TotalCard>
-        <PriceList>
+const Cart: React.FC = () => {
+  const [price, setPrice] = useState<Price | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
 
-          <PriceItem>
+  const { params } = useRouteMatch<PriceParams>()
+
+  useEffect(() => {
+    api.get('').then((response) => {
+      setProducts(response.data)
+      console.log(response.data)
+    })
+
+    api.get('').then((response) => {
+      setPrice(response.data)
+    })
+  }, [params.product]);
+
+  // Total price hightlight
+  return (
+    <>
+      <h1>Cart</h1>
+      <CartWrapper>
+        {/* <Cards /> */}
+          <h2>Produtos</h2>
+          <ProductsList>
+              <Product >
+                <img
+                  src=""
+                  alt=""
+                />
+                <div>
+                  <p>L'oreal Professionnel Expert Absolut Repair Cortex Lipidium</p>
+                  <strong>R$ 299,00</strong>
+                </div>
+              </Product>
+          </ProductsList>
+        {/* <Total /> */}
+        <TotalCard>
+          <PriceItem >
             <p>Produtos</p>
-            <p>R$ 624,50</p>
+            <p>R$ {price?.subTotal}</p>
           </PriceItem>
 
           <PriceItem>
             <p>Frete</p>
-            <p>R$ 5,30</p>
+            <p>R$ {price?.shippingTotal}</p>
           </PriceItem>
 
-          <Discount>
+          <PriceItem theme={{main: "#FF7800"}}>
             <p>Desconto</p>
-            <p>- R$ 30,0</p>
-          </Discount>
+            <p>- R$ {price?.discount}</p>
+          </PriceItem>
 
-          <TotalPrice>
-            <p>Total</p>
-            <p>R$ 600,10</p>
-          </TotalPrice>
-        </PriceList>
-
-      </TotalCard>
+            <PriceItem>
+              <strong>Total</strong>
+              <strong>R$ {price?.total}</strong>
+            </PriceItem>
+        </TotalCard>
 
 
-      {/* <Buttom /> */}
-      <ButtomIcon>
-        Seguir para o pagamento
-      </ButtomIcon>
-    </CartWrapper>
-  </>
-);
+        {/* <Buttom /> */}
+        <ButtomIcon>
+          Seguir para o pagamento
+        </ButtomIcon>
+      </CartWrapper>
+    </>
+  )
+};
 
 export default Cart;

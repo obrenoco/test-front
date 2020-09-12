@@ -2,12 +2,7 @@ import styled from 'styled-components';
 
 export const CartWrapper = styled.div`
   padding: 10px;
-`;
-
-
-// Product Card
-export const CardsWrapper = styled.div``;
-export const ProductTitle = styled.text`
+  h2 {
   height: 17px;
   text-transform: uppercase;
   display: flex;
@@ -19,8 +14,14 @@ export const ProductTitle = styled.text`
   font-weight: 700;
   letter-spacing: NaNpx;
   line-height: 17px;
+  }
+
 `;
-export const CardList = styled.div`
+
+
+// Product Card
+
+export const ProductsList = styled.div`
   margin: 0 auto;
   padding: 0.1px 12px;
   border-radius: 3px;
@@ -51,28 +52,27 @@ export const Product = styled.div`
     margin-right: 12px;
     padding: 12px 0;
   }
+  strong {
+    height: 17px;
+    color: #212122;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: NaNpx;
+    line-height: 17px;
+    text-align: right;
+    margin-bottom: 2px;
+  }
+  p {
+    height: 32px;
+    color: #212122;
+    font-family: "Helvetica Neue";
+    font-size: 13px;
+    letter-spacing: NaNpx;
+    line-height: 16px;
+  }
 `;
 
-export const ItemTitle = styled.text`
-  height: 32px;
-  color: #212122;
-  font-family: "Helvetica Neue";
-  font-size: 13px;
-  letter-spacing: NaNpx;
-  line-height: 16px;
-`;
-
-export const Price = styled.text`
-  height: 17px;
-  color: #212122;
-  font-family: "Helvetica Neue";
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: NaNpx;
-  line-height: 17px;
-  text-align: right;
-  margin-bottom: 2px;
-`;
 
 // Total Card
 export const TotalCard = styled.div`
@@ -84,40 +84,16 @@ export const TotalCard = styled.div`
   border-radius: 3px;
   border: 1px solid #CCC;
 `;
-export const PriceList = styled.div`
-  height: 100%;
-`;
+
 export const PriceItem = styled.div`
   margin: 9px 0;
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
-  color: #212122;
   font-family: "Helvetica Neue";
   font-size: 14px;
   letter-spacing: NaNpx;
-`;
-export const Discount = styled.div`
-  margin: 9px 0;
-  text-transform: uppercase;
-  color: #FF7800;
-  display: flex;
-  justify-content: space-between;
-  font-family: "Helvetica Neue";
-  font-size: 14px;
-  letter-spacing: NaNpx;
-`;
-
-export const TotalPrice = styled.div`
-  text-transform: uppercase;
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  color: #212122;
-  font-family: "Helvetica Neue";
-  font-size: 14px;
-  letter-spacing: NaNpx;
-  font-weight: 700;
+  color: ${props => props.theme.main};
 `;
 
 // Button
