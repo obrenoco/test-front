@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { isTemplateSpan } from 'typescript';
 
 import api from '../../services/api'
 
@@ -10,43 +11,40 @@ interface PriceParams {
 }
 
 interface Price {
-  shippingTotal: number;
-  subTotal: number;
-  discount: number;
-  total: number;
+  shippingTotal: number,
+  subTotal: number,
+  discount: number,
+  total: number,
 }
 
-interface Product {
-  id: string;
-  items: {
+interface ItemImage {
+  small: string;
+}
+interface Item {
+    id: string;
     product: {
+      sku: string;
       name: string;
-      imageObjects: {
-        small: string;
-      }
+      imageObjects: Array<ItemImage>
       priceSpecification: {
         price: number;
       }
     }
   }
-}
 
 const Cart: React.FC = () => {
   const [price, setPrice] = useState<Price | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
-
-  const { params } = useRouteMatch<PriceParams>()
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
-    api.get('').then((response) => {
-      setProducts(response.data)
-      console.log(response.data)
+    api.get('5b15c4923100004a006f3c07').then((response) => {
+      setItems(response.data.items)
+      console.log(response.data.items)
     })
-
-    api.get('').then((response) => {
+    api.get('5b15c4923100004a006f3c07 ').then((response) => {
       setPrice(response.data)
     })
-  }, [params.product]);
+  }, []);
 
   // Total price hightlight
   return (
@@ -56,16 +54,18 @@ const Cart: React.FC = () => {
         {/* <Cards /> */}
           <h2>Produtos</h2>
           <ProductsList>
-              <Product >
+            {items.map(item => (
+              <Product key={item.id}>
                 <img
-                  src=""
-                  alt=""
+                  src={item.product.imageObjects[0].small}
+                  alt={item.product.name}
                 />
                 <div>
-                  <p>L'oreal Professionnel Expert Absolut Repair Cortex Lipidium</p>
-                  <strong>R$ 299,00</strong>
+                  <p>{item.product.name}</p>
+                  <strong>R$ {item.product.priceSpecification.price}</strong>
                 </div>
               </Product>
+            ))}
           </ProductsList>
         {/* <Total /> */}
         <TotalCard>
