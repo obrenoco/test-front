@@ -6,10 +6,6 @@ import api from '../../services/api'
 
 import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
 
-interface PriceParams {
-  product: string;
-}
-
 interface Price {
   shippingTotal: number,
   subTotal: number,
