@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
 
 import api from '../../services/api'
 
-import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
+import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList, Header, Active } from './styles'
 
-
+interface Item {
+  id: string;
+  product: {
+    sku: string;
+    name: string;
+    imageObjects: Array<ItemImage>
+    priceSpecification: {
+      price: number;
+    }
+  }
+}
 interface ItemImage {
   small: string;
 }
-
-interface Item {
-    id: string;
-    product: {
-      sku: string;
-      name: string;
-      imageObjects: Array<ItemImage>
-      priceSpecification: {
-        price: number;
-      }
-    }
-  }
 
 interface Price {
   shippingTotal: number,
@@ -30,8 +27,8 @@ interface Price {
 }
 
 const Cart: React.FC = () => {
-  const [price, setPrice] = useState<Price | null>(null);
   const [items, setItems] = useState<Item[]>([]);
+  const [price, setPrice] = useState<Price | null>(null);
 
   useEffect(() => {
     api.get('5b15c4923100004a006f3c07').then((response) => {
@@ -45,10 +42,23 @@ const Cart: React.FC = () => {
 
   const textButton = 'Seguir para o pagamento';
 
+
+  const path =  window.location.pathname;
+  const ActiveTab = "#FF7800";
+  const Inactive = "#ccc";
   // Total price hightlight
   return (
     <>
-      <h1>Cart</h1>
+
+      {/* <Header /> */}
+      <Header>
+        <ul>
+          <li><Active color={path === "/" ? ActiveTab:Inactive}>Sacola</Active></li>
+          <li><Active color={path.match('/payment') ? ActiveTab:Inactive}>Pagamento</Active></li>
+          <li><Active color={path.match('/confirmation') ? ActiveTab:Inactive}>Confirmação</Active></li>
+        </ul>
+      </Header>
+
       <CartWrapper>
         {/* <Cards /> */}
           <h2>Produtos</h2>
