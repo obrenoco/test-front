@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { isTemplateSpan } from 'typescript';
+import {Link} from 'react-router-dom'
 
 import api from '../../services/api'
 
 import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
 
-interface Price {
-  shippingTotal: number,
-  subTotal: number,
-  discount: number,
-  total: number,
-}
 
 interface ItemImage {
   small: string;
 }
+
 interface Item {
     id: string;
     product: {
@@ -27,6 +21,13 @@ interface Item {
       }
     }
   }
+
+interface Price {
+  shippingTotal: number,
+  subTotal: number,
+  discount: number,
+  total: number,
+}
 
 const Cart: React.FC = () => {
   const [price, setPrice] = useState<Price | null>(null);
@@ -42,6 +43,8 @@ const Cart: React.FC = () => {
     })
   }, []);
 
+  const textButton = 'Seguir para o pagamento';
+
   // Total price hightlight
   return (
     <>
@@ -51,7 +54,7 @@ const Cart: React.FC = () => {
           <h2>Produtos</h2>
           <ProductsList>
             {items.map(item => (
-              <Product key={item.id}>
+              <Product key={item.product.sku}>
                 <img
                   src={item.product.imageObjects[0].small}
                   alt={item.product.name}
@@ -63,6 +66,8 @@ const Cart: React.FC = () => {
               </Product>
             ))}
           </ProductsList>
+
+
         {/* <Total /> */}
         <TotalCard>
           <PriceItem >
@@ -80,16 +85,16 @@ const Cart: React.FC = () => {
             <p>- R$ {price?.discount}</p>
           </PriceItem>
 
-            <PriceItem>
-              <strong>Total</strong>
-              <strong>R$ {price?.total}</strong>
-            </PriceItem>
+          <PriceItem>
+            <strong>Total</strong>
+            <strong>R$ {price?.total}</strong>
+          </PriceItem>
         </TotalCard>
 
 
         {/* <Buttom /> */}
-        <ButtomIcon>
-          Seguir para o pagamento
+        <ButtomIcon to="/confirmation">
+          {textButton}
         </ButtomIcon>
       </CartWrapper>
     </>
