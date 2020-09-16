@@ -18,6 +18,47 @@ export const PaymentWrapper = styled.div`
   }
 `;
 
+export const PaymentCard = styled.div`
+  margin: 0 auto;
+  padding: 0.1px 12px;
+  border-radius: 3px;
+  background-color: #FFF;
+  box-shadow: 1px 1px 5px 0 rgba(0,0,29,0.22);
+  div {
+    margin: 10px 0;
+  }
+  div:nth-of-type(3n) {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-gap: 20px;
+  }
+  p {
+    color: #CCC;
+    font-size: 12px;
+    font-family: Helvetica Neue;
+    line-height: 22px;
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+    height: 45px;
+    border: solid #E7E7E7;
+    box-shadow: inset 0 0 1px 0px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    padding: 13px;
+    font-size: 16px;
+    ::placeholder {
+      color: #E7E7E7;
+      letter-spacing: 1.37px;
+    }
+    :focus {
+      border: solid #A43287;
+    }
+  }
+`;
+
+
+
 export const ButtonIcon = styled(Link)`
   display: flex;
   align-items: center;
