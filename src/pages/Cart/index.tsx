@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Header from '../../components/Header';
 
 import api from '../../services/api'
 
-import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList, Header, Active } from './styles'
+import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
 
 interface Item {
   id: string;
@@ -76,23 +77,11 @@ const Cart: React.FC = () => {
 
   const textButton = 'Seguir para o pagamento';
 
-
-  const path =  window.location.pathname;
-  const ActiveTab = "#FF7800";
-  const Inactive = "#ccc";
-  // Total price hightlight
   return (
     <>
-      {/* <Header /> */}
-      <Header>
-        <ul>
-          <li><Active color={path === "/" ? ActiveTab:Inactive}>Sacola</Active></li>
-          <li><Active color={path.match('/payment') ? ActiveTab:Inactive}>Pagamento</Active></li>
-          <li><Active color={path.match('/confirmation') ? ActiveTab:Inactive}>Confirmação</Active></li>
-        </ul>
-      </Header>
-
+      <Header />
       <CartWrapper>
+
         {/* <Cards /> */}
         <h2>Produtos</h2>
         <ProductsList>
@@ -133,9 +122,8 @@ const Cart: React.FC = () => {
           </PriceItem>
         </TotalCard>
 
-
         {/* <Buttom /> */}
-        <ButtomIcon to="/confirmation">
+        <ButtomIcon to="/payment">
           {textButton}
         </ButtomIcon>
       </CartWrapper>

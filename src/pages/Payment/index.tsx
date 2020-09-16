@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 const Payment: React.FC = () => {
   return (
-    <h1>Payment</h1>
+    <>
+      <Header />
+    </>
   );
 }
 

@@ -4,24 +4,22 @@ import styled from 'styled-components';
 export const CartWrapper = styled.div`
   padding: 10px;
   h2 {
-  height: 17px;
-  text-transform: uppercase;
-  display: flex;
-  margin: 5px 20px;
-  flex-grow: 1;
-  color: #999;
-  font-family: "Helvetica Neue";
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: NaNpx;
-  line-height: 17px;
+    height: 17px;
+    text-transform: uppercase;
+    display: flex;
+    margin: 5px 20px;
+    flex-grow: 1;
+    color: #999;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: NaNpx;
+    line-height: 17px;
   }
-
 `;
 
 
 // Product Card
-
 export const ProductsList = styled.div`
   margin: 0 auto;
   padding: 0.1px 12px;
@@ -116,33 +114,4 @@ export const ButtomIcon = styled(Link)`
   :hover{
     background: #D45A00;
   }
-`;
-
-export const Header = styled.div`
-  width: 100%;
-  border-radius: 3px;
-  background-color: #FFF;
-  box-shadow: 0px 3px 5px -1px rgba(0,0,29,0.22);
-  margin-bottom: 10px;
-  ul{
-    margin: 0 auto;
-    max-width: 740px;
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-
-    li{
-      padding: 12px 22px;
-      list-style:none;
-    }
-  }
-`;
-
-export const Active = styled.text`
-  color:${props => props.color};
-  font-size: 13px;
-  text-transform:uppercase;
-  font-weight: 700;
-  line-height: 16px;
-  text-align: center;
 `;
