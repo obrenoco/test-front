@@ -1,25 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
+import ProductsList from '../../components/ProductsList';
+import api from '../../services/api';
 
-import api from '../../services/api'
-
-import {CartWrapper, Product, TotalCard,PriceItem, ButtomIcon, ProductsList } from './styles'
-
-interface Item {
-  id: string;
-  product: {
-    sku: string;
-    name: string;
-    imageObjects: Array<ItemImage>
-    priceSpecification: {
-      price: number;
-    }
-  }
-}
-interface ItemImage {
-  small: string;
-}
-
+import {CartWrapper, TotalCard,PriceItem, ButtomIcon } from './styles'
 interface Price {
   shippingTotal: number,
   subTotal: number,
@@ -28,18 +12,6 @@ interface Price {
 }
 
 const Cart: React.FC = () => {
-  const [items, setItems] = useState<Item[]>(() => {
-    const storagedItems = localStorage.getItem(
-      '@BelezaNaWeb:products',
-    )
-
-    if (storagedItems) {
-      return JSON.parse(storagedItems);
-    } else {
-      return []
-    }
-  });
-
   const [price, setPrice] = useState<Price | null>(() => {
     const storagedPrices = localStorage.getItem(
       '@BelezaNaWeb:prices',
@@ -54,22 +26,12 @@ const Cart: React.FC = () => {
 
   useEffect(() => {
     localStorage.setItem(
-      '@BelezaNaWeb:products',
-      JSON.stringify(items),
-    )
-  },[items]);
-
-  useEffect(() => {
-    localStorage.setItem(
       '@BelezaNaWeb:prices',
         JSON.stringify(price),
     )
   }, [price]);
 
   useEffect(() => {
-    api.get('5b15c4923100004a006f3c07').then((response) => {
-      setItems(response.data.items)
-    })
     api.get('5b15c4923100004a006f3c07 ').then((response) => {
       setPrice(response.data)
     })
@@ -84,20 +46,7 @@ const Cart: React.FC = () => {
 
         {/* <Cards /> */}
         <h2>Produtos</h2>
-        <ProductsList>
-          {items.map(item => (
-            <Product key={item.product.sku}>
-              <img
-                src={item.product.imageObjects[0].small}
-                alt={item.product.name}
-              />
-              <div>
-                <p>{item.product.name}</p>
-                <strong>R$ {item.product.priceSpecification.price}</strong>
-              </div>
-            </Product>
-          ))}
-        </ProductsList>
+        <ProductsList />
 
         {/* <Total /> */}
         <TotalCard>
