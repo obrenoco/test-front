@@ -119,10 +119,10 @@ export const ButtomIcon = styled(Link)`
 `;
 
 export const Header = styled.div`
-  width: 100vw;
+  width: 100%;
   border-radius: 3px;
   background-color: #FFF;
-  box-shadow: 1px 1px 5px 0 rgba(0,0,29,0.22);
+  box-shadow: 0px 3px 5px -1px rgba(0,0,29,0.22);
   margin-bottom: 10px;
   ul{
     margin: 0 auto;

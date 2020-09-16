@@ -68,7 +68,6 @@ const Cart: React.FC = () => {
   useEffect(() => {
     api.get('5b15c4923100004a006f3c07').then((response) => {
       setItems(response.data.items)
-      console.log(response.data.items)
     })
     api.get('5b15c4923100004a006f3c07 ').then((response) => {
       setPrice(response.data)
