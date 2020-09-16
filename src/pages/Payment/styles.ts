@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const CartWrapper = styled.div`
+export const PaymentWrapper = styled.div`
   padding: 10px;
   h2 {
     height: 17px;
