@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.div`
   width: 100%;
   border-radius: 3px;
-  background-color: #FFF;
+  background-color: #FFFF;
   box-shadow: 0px 3px 5px -1px rgba(0,0,29,0.22);
   margin-bottom: 10px;
   ul {
