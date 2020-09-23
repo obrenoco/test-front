@@ -25,18 +25,19 @@ export const PaymentCard = styled.div`
   background-color: #FFF;
   box-shadow: 1px 1px 5px 0 rgba(0,0,29,0.22);
   div {
-    margin: 10px 0;
-  }
-  div:nth-of-type(3n) {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    grid-gap: 20px;
+    margin: 12px 0;
+    :nth-of-type(3n) {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      grid-gap: 20px;
+    }
   }
   p {
     color: #CCC;
     font-size: 12px;
+    margin: 0 0 5px 1px;
     font-family: Helvetica Neue;
-    line-height: 22px;
+    line-height: 14px;
     font-weight: bold;
   }
   input {

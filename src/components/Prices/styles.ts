@@ -19,4 +19,7 @@ export const PriceItem = styled.div`
   font-size: 14px;
   letter-spacing: NaNpx;
   color: ${props => props.theme.main};
+  :last-child {
+    margin-top: 20px;
+  }
 `;
